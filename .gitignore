@@ -1,0 +1,16 @@
+# workdir artifacts
+output/
+jsonl/
+universal/
+snapshot/
+bin/
+imessage-archive.db*
+names.json
+iMessage-Archive-*/
+
+# rust
+dumper/target/
+dumper/Cargo.lock
+
+# misc
+.DS_Store
