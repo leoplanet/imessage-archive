@@ -1,7 +1,8 @@
 # iMessage Archive Toolkit
 
-Salvage your complete iMessage history from a Mac into portable, searchable,
-self-contained archives.
+View your iMessage history forever, as if you were still in the app — a
+self-contained open HTML archive you own. No subscriptions, no app, no
+cloud: one file per year that opens anywhere, with everything embedded.
 
 Built from a real-world export: 14,368 messages, 715 conversations, 791
 attachments (2023–2026), macOS 26, exported 2026-10.
