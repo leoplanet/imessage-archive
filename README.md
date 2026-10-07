@@ -31,6 +31,44 @@ the dumper, network access to download `imessage-exporter`.
 
 Individual steps are in `scripts/` and can be run separately.
 
+## Prerequisite: iMessage must be synced to iCloud (read this first!)
+
+The pipeline exports `~/Library/Messages/chat.db` — the Mac's **local copy**
+of your message history. That copy is only complete if iMessage is synced
+through iCloud. **If sync is off, the pipeline will happily export a partial
+history** (only what was sent/received on the Mac itself) and nothing will
+tell you it's incomplete.
+
+### Enable it
+
+**iPhone:** Settings → *Messages* → *Send & Receive* — make sure your number
+and email are listed. Then Settings → *[your name]* → *iCloud* → *Show All*
+→ *Messages* → **On**.
+
+**Mac:** System Settings → *Apple Account* → *iCloud* → *Show All* →
+*Messages* → **On**. In the Messages app: Messages → Settings → *iMessage*
+tab — signed in with the **same Apple ID** as your iPhone.
+
+If you're turning this on for the first time, give the initial sync time
+(large histories can take hours to a day), and keep both devices online and
+idle while it runs.
+
+### Verify completeness before exporting
+
+```sh
+# oldest + newest message in the Mac's DB (local time)
+sqlite3 ~/Library/Messages/chat.db \
+  "SELECT MIN(date), MAX(date), COUNT(*) FROM message;"
+```
+
+- Convert the raw nanosecond values: `unix = value/1e9 + 978307200`
+  (epoch is 2001-01-01, not 1970).
+- The **oldest** date should match the oldest message you can scroll to on
+  your iPhone's Messages app. If the Mac's range starts much later, sync is
+  incomplete (or was recently turned on).
+- Sanity-check the count against your usage — a phone that's been active for
+  years should have tens of thousands of messages, not a few hundred.
+
 ## Where iMessage lives on macOS
 
 ```
