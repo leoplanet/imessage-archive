@@ -196,10 +196,15 @@ swift tests/shot.swift       universal/2026.html /tmp/shot.png  # screenshot
 ## Repo layout
 
 ```
+AGENTS.md  runbook for AI agents running this pipeline
 dumper/    Rust JSONL dumper (imessage-database crate)
 scripts/   pipeline (run.sh + steps) and Python tools
 tests/     headless WebKit verification scripts
 ```
+
+**Using an AI coding agent?** Point it at `AGENTS.md` — it covers
+pre-flight checks (including the iCloud sync verification), execution,
+verification, delivery, and the pitfalls.
 
 ## Refreshing
 
