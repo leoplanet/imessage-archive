@@ -11,7 +11,7 @@ python3 search.py "roof"
 python3 search.py "interview" -n 50
 
 # Limit to one conversation (by chat_id or participant substring)
-python3 search.py "roof" -c "+61438416817"
+python3 search.py "roof" -c "+15551234567"
 
 # List all conversations (most recent activity first)
 python3 search.py --list
